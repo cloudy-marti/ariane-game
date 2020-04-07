@@ -3,5 +3,5 @@ class Ariane:
 		self.x = posX
 		self.y = posY
 
-	def move() :
+	def move(self) :
 		# TODO

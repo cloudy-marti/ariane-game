@@ -1,7 +1,11 @@
-class Ariane:
-	def __init__(self, posX, posY) :
-		self.x = posX
-		self.y = posY
+from utils.graphics import picturePathDictionary
 
-	def move(self) :
-		# TODO
+
+class Player:
+	def __init__(self, row, column):
+		self.row = row
+		self.column = column
+		self.has_thesee = False
+		self.has_minotaur = False
+		self.exit_reached = False
+		self.picture_path = picturePathDictionary['A']

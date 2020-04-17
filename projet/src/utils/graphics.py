@@ -55,7 +55,7 @@ def draw_horizontal_wall(labyrinth, row, column):
 def draw_invisible_comma(labyrinth, row, column):
     x = (column / 2 * labyrinth.window_size / labyrinth.cell_number) + labyrinth.margin
     y = (row / 2 * labyrinth.window_size / labyrinth.cell_number) + labyrinth.margin
-    point(x, y, epaisseur=0)
+    # point(x, y, couleur='grey3', epaisseur=0)
 
 
 def draw_picture(labyrinth, row, column, path_to_file):

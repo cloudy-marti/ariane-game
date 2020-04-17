@@ -1,7 +1,6 @@
 class LabState:
-	def __init__(self, lab, direction):
+	def __init__(self, lab):
 		self.lab = lab
-		self.direction = direction
 		self.saved_state = ()
 
 	def defeat(self):

@@ -21,7 +21,6 @@ class Solver:
 			valid_move = False
 			for direction in ['Up', 'Down', 'Left', 'Right']:
 				self.moves.append(direction)
-				# try to move player
 				if direction == 'Up':
 					valid_move = state.lab.compute_up()
 				if direction == 'Down':
@@ -30,7 +29,6 @@ class Solver:
 					valid_move = state.lab.compute_left()
 				if direction == 'Right':
 					valid_move = state.lab.compute_right()
-				# if player could move
 				if valid_move:
 					state.lab.move_minotaurs()
 					state.save()
@@ -59,12 +57,10 @@ def solve():
 	path = "../../maps/" + sys.argv[1]
 
 	lab = parse_map(path)
-	print(type(lab))
 
 	solver = Solver(lab)
-	solver.solve_state(LabState(lab, "None"))
+	solver.solve_state(LabState(lab))
 
-	print(solver.visited_states)
 	print(solver.moves)
 
 
@@ -78,7 +74,7 @@ def graphical_solve():
 	lab = parse_map(path)
 
 	solver = Solver(lab)
-	solver.solve_state(LabState(lab, "None"))
+	solver.solve_state(LabState(lab))
 
 	print(solver.visited_states)
 	print(solver.moves)
@@ -90,7 +86,6 @@ def graphical_solve():
 
 	while True:
 		move = solver.moves.pop(0)
-		print(move)
 
 		if move == 'Up':
 			lab.compute_up()
@@ -103,15 +98,15 @@ def graphical_solve():
 
 		lab.move_minotaurs()
 
-		efface_tout()
-		draw_map(lab)
-
-		attente(0.2)
-
 		if lab.player.exit_reached and lab.player.has_thesee:
 			image(w_size / 2, w_size / 2, picturePathDictionary['E'])
 			attend_clic_gauche()
 			break
+
+		efface_tout()
+		draw_map(lab)
+
+		attente(0.2)
 
 		if lab.player.has_minotaur:
 			image(w_size / 2, w_size / 2, picturePathDictionary['D'])
@@ -119,5 +114,26 @@ def graphical_solve():
 			break
 
 
+def positive_input(user_input):
+	return user_input == 'Y' or user_input == 'y' or user_input == 'Yes' or user_input == 'YES' or user_input == 'yes'
 
-graphical_solve()
+
+def negative_input(user_input):
+	return user_input == 'N' or user_input == 'n' or user_input == 'No' or user_input == 'NO' or user_input == 'no'
+
+
+def main():
+	print("Do you want a graphical mode ? Y/N")
+	while True:
+		user_input = input()
+		if positive_input(user_input):
+			graphical_solve()
+			break
+		elif negative_input(user_input):
+			solve()
+			break
+		else:
+			pass
+
+
+main()

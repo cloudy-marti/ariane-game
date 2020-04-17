@@ -58,7 +58,6 @@ class Labyrinth:
 			# case: either Ariane or Thesee are encountered
 			# defeat condition (player.has_minotaur) to be set
 			if self.lst[index][minotaur.column] == 'A' or self.lst[index][minotaur.column] == 'T':
-				print(minotaur.type + " has killed you")
 				minotaur.row = index
 				self.update_asset_lst(minotaur.type, last_index, minotaur.column, minotaur.row, minotaur.column)
 				self.player.has_minotaur = True
@@ -88,7 +87,6 @@ class Labyrinth:
 			# case: either Ariane or Thesee are encountered
 			# defeat condition (player.has_minotaur) to be set
 			if self.lst[minotaur.row][index] == 'A' or self.lst[minotaur.row][index] == 'T':
-				print(minotaur.type + " has killed you")
 				minotaur.column = index
 				self.update_asset_lst(minotaur.type, minotaur.row, last_index, minotaur.row, minotaur.column)
 				self.player.has_minotaur = True
@@ -140,23 +138,26 @@ class Labyrinth:
 			self.player.column = column
 			self.update_asset_lst('A', old_row, old_column, row, column)
 			self.collect_thesee()
+			return True
+		else:
+			return False
 
 	def compute_left(self):
 		row = self.player.row
 		column = self.player.column
-		self.compute_position(row, column, row, column-1, row, column-2)
+		return self.compute_position(row, column, row, column-1, row, column-2)
 
 	def compute_right(self):
 		row = self.player.row
 		column = self.player.column
-		self.compute_position(row, column, row, column+1, row, column+2)
+		return self.compute_position(row, column, row, column+1, row, column+2)
 
 	def compute_up(self):
 		row = self.player.row
 		column = self.player.column
-		self.compute_position(row, column, row-1, column, row-2, column)
+		return self.compute_position(row, column, row-1, column, row-2, column)
 
 	def compute_down(self):
 		row = self.player.row
 		column = self.player.column
-		self.compute_position(row, column, row+1, column, row+2, column)
+		return self.compute_position(row, column, row+1, column, row+2, column)

@@ -1,4 +1,4 @@
-from assets.lab_state import LabState
+from utils.lab_state import LabState
 from utils.graphics import *
 from utils.labyrinth_utils import *
 import sys
@@ -6,18 +6,27 @@ import sys
 
 class Solver:
 	def __init__(self, labyrinth):
+		# game labyrinth to be solved
 		self.labyrinth = labyrinth
+		# use a set to save each visited_state only once
 		self.visited_states = set()
+		# list of moves needed to solve the game
 		self.moves = []
+		# list of states to be dealt with
+		self.to_do_states = []
 
 	def solve_state(self, state):
+		# Success condition : Ariane has Thesee and reaches the exit
 		if state.success():
 			return True
+		# Defeat condition : Ariane or Thesee are encountered by a minotaur
 		if state.defeat():
 			return False
 		else:
 			self.visited_states.add(state.save())
+			# save this configuration in an immutable structure in case the solver needs to go back
 			previous_state = state.saved_state
+			# try the 4 directions one by one
 			valid_move = False
 			for direction in ['Up', 'Down', 'Left', 'Right']:
 				self.moves.append(direction)
@@ -29,20 +38,26 @@ class Solver:
 					valid_move = state.lab.compute_left()
 				if direction == 'Right':
 					valid_move = state.lab.compute_right()
+				# if Ariane was able to move to the chosen direction
 				if valid_move:
 					state.lab.move_minotaurs()
+					# save the current configuration in an immutable structure
 					state.save()
 					current_position = state.saved_state
 					if current_position not in self.visited_states:
 						self.visited_states.add(current_position)
+						# test recursively if a win condition can be found from this configuration
 						if self.solve_state(state):
 							return True
+						# no success condition is found from this state
 						else:
 							self.moves.pop()
 							state.load(previous_state)
+					# state has already been visited
 					else:
 						self.moves.pop()
 						state.load(previous_state)
+				# Ariane encountered a wall and couldn't move
 				else:
 					self.moves.pop()
 					state.load(previous_state)
@@ -57,7 +72,6 @@ def solve():
 	path = "../../maps/" + sys.argv[1]
 
 	lab = parse_map(path)
-
 	solver = Solver(lab)
 	solver.solve_state(LabState(lab))
 
@@ -76,7 +90,6 @@ def graphical_solve():
 	solver = Solver(lab)
 	solver.solve_state(LabState(lab))
 
-	print(solver.visited_states)
 	print(solver.moves)
 
 	w_size = 810
@@ -85,19 +98,6 @@ def graphical_solve():
 	lab = parse_map(path)
 
 	while True:
-		move = solver.moves.pop(0)
-
-		if move == 'Up':
-			lab.compute_up()
-		if move == 'Down':
-			lab.compute_down()
-		if move == 'Left':
-			lab.compute_left()
-		if move == 'Right':
-			lab.compute_right()
-
-		lab.move_minotaurs()
-
 		if lab.player.exit_reached and lab.player.has_thesee:
 			image(w_size / 2, w_size / 2, picturePathDictionary['E'])
 			attend_clic_gauche()
@@ -112,6 +112,19 @@ def graphical_solve():
 			image(w_size / 2, w_size / 2, picturePathDictionary['D'])
 			attend_clic_gauche()
 			break
+
+		move = solver.moves.pop(0)
+
+		if move == 'Up':
+			lab.compute_up()
+		if move == 'Down':
+			lab.compute_down()
+		if move == 'Left':
+			lab.compute_left()
+		if move == 'Right':
+			lab.compute_right()
+
+		lab.move_minotaurs()
 
 
 def positive_input(user_input):

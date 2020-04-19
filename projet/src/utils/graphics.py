@@ -1,4 +1,4 @@
-from projet.src.utils.upemtk import *
+from utils.upemtk import *
 
 
 def display_map(labyrinth):

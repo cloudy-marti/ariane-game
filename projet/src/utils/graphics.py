@@ -65,17 +65,17 @@ def draw_picture(labyrinth, row, column, path_to_file):
 
 
 picturePathDictionary = {
-    'A': "../../media/ariane.png",
-    'T': "../../media/thesee.png",
-    'B': "../../media/arianeWithThesee.png",
-    'C': "../../media/porteWithAriane.png",
-    'V': "../../media/minoV.png",
-    'W': "../../media/porteWithV.png",
-    'H': "../../media/minoH.png",
-    'I': "../../media/porteWithH.png",
-    'P': "../../media/porte.png",
-    'D': "../../media/game_over.png",
-    'E': "../../media/game_win.png"
+    'A': "../media/ariane.png",
+    'T': "../media/thesee.png",
+    'B': "../media/arianeWithThesee.png",
+    'C': "../media/porteWithAriane.png",
+    'V': "../media/minoV.png",
+    'W': "../media/porteWithV.png",
+    'H': "../media/minoH.png",
+    'I': "../media/porteWithH.png",
+    'P': "../media/porte.png",
+    'D': "../media/game_over.png",
+    'E': "../media/game_win.png"
 }
 
 

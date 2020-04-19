@@ -8,7 +8,7 @@ def game():
 		print("Usage: python game.py path_to_file\n")
 		return
 
-	path = "../../maps/" + sys.argv[1]
+	path = "../maps/" + sys.argv[1]
 
 	lab = parse_map(path)
 	w_size = 810

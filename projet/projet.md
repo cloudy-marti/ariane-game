@@ -8,10 +8,10 @@ Le jeu consiste en un labyrinthe peuplé de minotaures hostiles. Ariane, le pers
 # Table des matières
 
 1. [Langage et outils](#langage-et-outils)
-2. [Fonctionalités](#fonctionalits)
+2. [Fonctionalités](#fonctionalitU+00E9s)
 3. [Mode d'emploi](#mode-demploi)\
-3.1. [Exécution sur Console](#excution-sur-console)\
-3.2. [Exécution depuis PyCharm](#excution-depuis-pycharm)
+3.1. [Exécution sur Console](#exU+00E9cution-sur-console)\
+3.2. [Exécution depuis PyCharm](#exU+00E9cution-depuis-pycharm)
 4. [Le projet](#le-projet)\
 4.1. [Organisation globale du projet](#organisation-globale-du-projet)
 

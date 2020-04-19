@@ -8,10 +8,10 @@ Le jeu consiste en un labyrinthe peuplé de minotaures hostiles. Ariane, le pers
 # Table des matières
 
 1. [Langage et outils](#langage-et-outils)
-2. [Fonctionalités](#fonctionalitU+00E9s)
+2. [Fonctionalités](#fonctionalites)
 3. [Mode d'emploi](#mode-demploi)\
-3.1. [Exécution sur Console](#exU+00E9cution-sur-console)\
-3.2. [Exécution depuis PyCharm](#exU+00E9cution-depuis-pycharm)
+3.1. [Exécution sur Console](#mode-demploi)\
+3.2. [Exécution depuis PyCharm](#mode-demploi)
 4. [Le projet](#le-projet)\
 4.1. [Organisation globale du projet](#organisation-globale-du-projet)
 
@@ -23,7 +23,7 @@ L'environnement de développment principale est Windows 10 et l'éditeur de mon 
 
 Le projet a été entièrement géré sous git. Vous pouvez le retrouver [ici](https://github.com/hyliancloud/INFO_Ariane).
 
-# Fonctionalités
+# Fonctionalites
 
 Les fonctionalités implémentées sont l'**affichage graphique du jeu** réalisé avec ``upemtk``, le **moteur de jeu** pour le mode solo et le **solveur naïf**, qui est un solver qui fait une recherche en profondeur et donne la première solution trouvée.
 

@@ -3,7 +3,7 @@ Projet Ariane
 
 Le projet **Ariane** a été fait dans le cadre du cours d'Outils Logiciels. Il s'agit de l'implémentation d'un jeu en langage Python avec graphisme, moteur de jeu et un solveur naïf.
 
-Le jeu consiste en un labyrinthe peuplé de minotaures hostiles. Ariane, le personnage principale et jouable, doit aller récupérer Thesée, un personnage non jouable, le tout en esquivant les minotaures. Lorsque Ariane récupère Thesée, ils doivent aller jusqu’à la porte toujours en évitant les minotaures.
+Le jeu consiste en un labyrinthe peuplé de minotaures hostiles. Ariane, le personnage principal et jouable, doit aller récupérer Thesée, un personnage non jouable, le tout en esquivant les minotaures. Lorsque Ariane récupère Thesée, ils doivent aller jusqu’à la porte toujours en évitant les minotaures.
 
 # Table des matières
 
@@ -25,7 +25,7 @@ Le projet a été entièrement géré sous git. Vous pouvez le retrouver [ici](h
 
 # Fonctionalités
 
-Les fonctionalités implémentées sont l'**affichage graphique du jeu** réalisé avec ``upemtk``, le **moteur de jeu** pour le mode solo et le **solveur naïf**, qui est un solver qui fait une recherche en profondeur donne la première solution trouvée.
+Les fonctionalités implémentées sont l'**affichage graphique du jeu** réalisé avec ``upemtk``, le **moteur de jeu** pour le mode solo et le **solveur naïf**, qui est un solver qui fait une recherche en profondeur et donne la première solution trouvée.
 
 # Mode d'emploi
 
@@ -43,7 +43,7 @@ Le "chemin_vers_map.txt" est le chemin de la configuration de base à partir du 
 
 ### Le jeu
 
-Si on veut jouer sur la carte définie par ``labyrinthe1.txt`` présent dans ``maps`` on va écrire:
+Si on veut jouer sur la carte définie par ``labyrinthe1.txt`` et présente dans ``maps`` on va écrire:
 
 ```bash
 python3 -m main.game labyrinthe1.txt
@@ -51,7 +51,7 @@ python3 -m main.game labyrinthe1.txt
 
 ### Le solver
 
-Si on veut la solution pour la carte définie par ``labyrinthe1.txt`` présent dans ``maps`` on va écrire:
+Si on veut la solution pour la carte définie par ``labyrinthe1.txt`` et présente dans ``maps`` on va écrire:
 
 ```bash
 python3 -m main.solver labyrinthe1.txt
@@ -63,15 +63,17 @@ Le programme va proposer une interface graphique si l'utilisateur le souhaite et
 
 ## Exécution depuis PyCharm
 
-Pour une raison de contextes différents selon si on exécute depuis la console ou depuis l'IDE, il faut aller récupérer la version sur master sur le projet:
+Pour un souci de contextes différents selon si on exécute depuis la console ou depuis l'IDE, il faut aller récupérer la version sur master sur le projet:
 
 ```bash
 git clone https://github.com/hyliancloud/INFO_Ariane.git
 ```
 
+Cette version présente de légères différences sur les chemins d'accès aux assets graphiques.
+
 Après avoir importé le projet sur PyCharm, il faut aller sur ``Add Configuration`` et cliquer sur ``+`` puis ``Python``.
 
-Dans ``Script path`` on recherche le fichier ``game.py`` et dans ``Parameters`` on rajoute le nom du fichier depuis le dossier ``maps``. Cliquer sur ``OK``.
+Dans ``Script path`` on choisit le fichier ``game.py`` et dans ``Parameters`` on rajoute le chemin du fichier depuis le dossier ``maps`` (comme précédemment). Cliquer sur ``OK``.
 
 Pour le solver, faire la même chose en pointant le chemin du script vers ``solver.py``.
 
@@ -116,12 +118,12 @@ Les fichiers sources sont organisées en trois packages:
 
 * **Assets**
 
-Les fichiers sources présents dans Assets sont principalement des classes pour représenter les objets principaux du jeu. Labyrinth est l'objet qui regroupe tous les membres du jeu et possède les fonctions du moteur du jeu.
+Les fichiers sources présents dans ``assets`` sont des classes pour représenter les objets principaux du jeu. Labyrinth est l'objet qui regroupe tous les membres du jeu et possède les fonctions du moteur de jeu.
 
 * **Utils**
 
-Les fichiers de utils possèdent les fonctions qui aident au fonctionnement du jeu et du solver, tel que la lecture des fichiers de base ou encore les fonctions graphiques.
+Les fichiers de ``utils`` possèdent les fonctions qui aident au fonctionnement du jeu et du solver, tel que la lecture des fichiers de base ou encore les fonctions graphiques.
 
 * **Main**
 
-Dans le package main on trouve les fichiers qui ont la boucle principale du jeu et du solver. Ce sont les fichiers qui devront être executés par l'utilisateur.
+Dans le package ``main`` on trouve les fichiers qui ont la boucle principale du jeu et du solver. Ce sont les fichiers qui devront être executés par l'utilisateur.
